@@ -5,19 +5,16 @@ function App() {
   const [todo, setToDo] = useState(''); //initializes value of the input to empty string
   const [todos, setToDos] = useState([]);
 
-  const listElements = todos.map((item, index) => {
-    <li key={index}>{item}</li>;
-  });
+  const listElements = todos.map((todo, index) => <li key={index}>{todo}</li>);
 
   function handleChange(e) {
     setToDo(e.target.value);
   }
 
-  function handleAddToDo() {
+  function handleAddItem(e) {
+    e.preventDefault(); //prevent default form submitting (reload) behavior
     if (todo.trim() === '') return; //prevents adding empty tasks
-    setToDos((prevToDo) => {
-      [...prevToDo, todo];
-    });
+    setToDos((prevToDos) => [...prevToDos, todo]);
     setToDo(''); //clears input
   }
 
@@ -27,9 +24,11 @@ function App() {
         <h1>TODO List</h1>
         <form>
           <input type='text' placeholder='Add something to your list' value={todo} onChange={handleChange}></input>
-          <button onClick={handleAddToDo}>Add to List</button>
+          <button onClick={handleAddItem}>Add to List</button>
         </form>
-        <div className='list--container'>{listElements}</div>
+        <div className='list--container'>
+          <ul>{listElements}</ul>
+        </div>
       </div>
     </>
   );
