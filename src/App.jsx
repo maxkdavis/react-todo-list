@@ -5,7 +5,10 @@ function App() {
   const [todo, setToDo] = useState(''); //initializes value of the input to empty string
   const [todos, setToDos] = useState([]);
 
-  const listElements = todos.map((todo, index) => <li key={index}>{todo}</li>);
+  // const listElements = todos.map((todo, index) => <li key={index}>{todo}</li>);
+  const listElements = todos.map((todo, index) => {
+    return <li key={index}>{todo}</li>;
+  });
 
   function handleChange(e) {
     setToDo(e.target.value);
@@ -27,7 +30,7 @@ function App() {
           <button onClick={handleAddItem}>Add to List</button>
         </form>
         <div className='list--container'>
-          <ul>{listElements}</ul>
+          <ul>{todos.length === 0 ? "...You're free today" : listElements}</ul>
         </div>
       </div>
     </>
