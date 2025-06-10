@@ -1,0 +1,39 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  /* border: 1px solid blue; */
+  width: 50%;
+  min-height: 500px;
+}
+
+body {
+  background-color: hsl(37, 26%, 87%);
+}
+
+.form--container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* light gray shadow */
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem 3rem;
+  height: 800px;
+}
+
+form {
+  display: flex;
+  gap: 2rem;
+}
+
+form > input {
+  flex-grow: 1; /*grow and fill any available space in the flex container*/
+  border: 1px solid #777;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding-left: 12px;
+}
+
+form > button {
+  width: 150px;
+  border: 1px solid #777;
+}
