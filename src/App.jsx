@@ -6,9 +6,12 @@ function App() {
   const [todos, setToDos] = useState([]);
 
   // const listElements = todos.map((todo, index) => <li key={index}>{todo}</li>);
-  const listElements = todos.map((todo, index) => {
-    return <li key={index}>{todo}</li>;
-  });
+  const listElements = todos.map((todo, index) => (
+    <div className='list-item-box'>
+      <span key={index}>{todo}</span>
+      <button>Delete</button>
+    </div>
+  ));
 
   function handleChange(e) {
     setToDo(e.target.value);
@@ -29,9 +32,7 @@ function App() {
           <input type='text' placeholder='Add something to your list' value={todo} onChange={handleChange}></input>
           <button onClick={handleAddItem}>Add to List</button>
         </form>
-        <div className='list--container'>
-          <ul>{todos.length === 0 ? "...You're free today" : listElements}</ul>
-        </div>
+        <div className='list--container'>{todos.length === 0 ? "...What's on your mind?" : listElements}</div>
       </div>
     </>
   );

@@ -41,9 +41,26 @@ form > button {
 .list--container {
   margin-top: 2rem;
   outline: 2px solid #aaa;
+  background-color: #bbb;
   display: flex;
+  gap: 1rem;
   flex-direction: column;
-  padding: 0;
+  padding: 0.5rem;
+}
+
+.list-item-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 0.5rem;
+  /* outline: 2px solid green; */
+}
+
+.list-item-box > button:hover {
+  background-color: hsl(0, 91%, 74%);
+  transition: background-color 0.5s linear;
 }
 
 ul {
@@ -55,6 +72,8 @@ ul {
 }
 
 li {
-  border: 1px solid blue;
+  flex-grow: 1;
+  padding: 1rem;
+  /* border: 1px solid blue; */
   text-align: left;
 }
