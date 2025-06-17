@@ -7,9 +7,9 @@ function App() {
 
   // const listElements = todos.map((todo, index) => <li key={index}>{todo}</li>);
   const listElements = todos.map((todo, index) => (
-    <div className='list-item-box'>
-      <span key={index}>{todo}</span>
-      <button>Delete</button>
+    <div key={index} className='list-item-box'>
+      <span>{todo}</span>
+      <button onClick={() => handleDelete(index)}>Delete</button>
     </div>
   ));
 
@@ -22,6 +22,14 @@ function App() {
     if (todo.trim() === '') return; //prevents adding empty tasks
     setToDos((prevToDos) => [...prevToDos, todo]);
     setToDo(''); //clears input
+  }
+
+  //element, index, array
+  //so if we want to skip the first paramenter, element, we have to denote '_'. see below
+
+  //delete button functionality
+  function handleDelete(indexToDelete) {
+    setToDos((prevToDos) => prevToDos.filter((_, index) => index !== indexToDelete));
   }
 
   return (
