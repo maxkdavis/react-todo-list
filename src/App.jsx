@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [todo, setToDo] = useState(''); //initializes value of the input to empty string
-  const [todos, setToDos] = useState([]);
+  const savedTodos = JSON.parse(localStorage.getItem('todos')) || []; //if localStorage is null, short-circuit to emprty array
+  const [todo, setToDo] = useState('');
+  const [todos, setToDos] = useState(savedTodos);
+
+  //save todos to localStorage whenever the list changes
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   // const listElements = todos.map((todo, index) => <li key={index}>{todo}</li>);
   const listElements = todos.map((todo, index) => (
@@ -36,9 +42,9 @@ function App() {
     <>
       <div className='form--container'>
         <h1>TODO List</h1>
-        <form>
+        <form onSubmit={handleAddItem}>
           <input type='text' placeholder='Add something to your list' value={todo} onChange={handleChange}></input>
-          <button onClick={handleAddItem}>Add to List</button>
+          <button>Add to List</button>
         </form>
         <div className='list--container'>{todos.length === 0 ? "...What's on your mind?" : listElements}</div>
       </div>
