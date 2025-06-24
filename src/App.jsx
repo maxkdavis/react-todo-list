@@ -46,7 +46,7 @@ function App() {
           <input type='text' placeholder='Add something to your list' value={todo} onChange={handleChange}></input>
           <button>Add to List</button>
         </form>
-        <div className='list--container'>{todos.length === 0 ? "...What's on your mind?" : listElements}</div>
+        <div className='list--container'>{todos.length === 0 ? 'Nothing to do today...' : listElements}</div>
       </div>
     </>
   );
